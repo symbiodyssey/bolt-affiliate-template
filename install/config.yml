@@ -7,20 +7,20 @@
 # If you're trying out Bolt, just keep it set to SQLite for now.
 database:
   driver: mysql
-  username: bolt
-  password: 
-  databasename: no_nordlysopplevelser
+  username: {{dbuser}}
+  password: {{dbpswd}}
+  databasename: {{dbname}}
   
 # The name of the website
-sitename: A sample site
-payoff: The amazing payoff goes here
+sitename: {{title}}
+payoff: 
 
 # The theme to use. Be sure to copy the {theme_path}/base-2016 folder, and
 # change the name here accordingly.
 #
 # Don't edit the templates in theme/base-2016, because they _will_ get updated
 # in next releases
-theme: base-2016
+theme: affilatews
 
 # The locale that'll be used by the application. If no locale is set the
 # fallback locale is 'en_GB'. For available options, see:
