@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>
+			{%- if record.title is defined %}{{ record.title|striptags }} | {% endif -%}
+           {{ app.config.get('general/sitename') -}}
+         {% if record.title is not defined and app.config.get('general/payoff') %} | {{ app.config.get('general/payoff') }}{% endif -%}
+		</title>
+		<link rel="stylesheet" href="{{ asset('css/style.css', 'theme') }}">
+		<link rel="stylesheet" href="{{ asset('css/design.css', 'theme') }}">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="content">
+			<header>
+				<div class="title">
+				{% setcontent logo = 'block/logo' %}
+				<a href="/"><img src="{{ logo.image|thumbnail(100,100,'c') }}"/></a>
+				<a href="/"><h1>{{app.config.get('general/sitename')}}</h1></a>
+				</div>
+				<div class="banner">{% setcontent logo = 'block/banner' %}
+				<img src="{{ logo.image|thumbnail(1280,250,'c') }}"/></div>
+				<div class="top-menu">
+					<span id="open" onclick="openNav()"><i class="fa fa-bars" aria-hidden="true"></i></span>
+					{{ menu(template = 'partials/_sub_menu.twig') }}
+				</div>
+			</header>
+<main>
+		{% block category %}
+      {% endblock category %}
+		{% block main %}
+      {% endblock main %}
+</main>
+		<footer>
+			<div>
+			{% setcontent footer = 'block/footer' %}
+			{{footer.content}}
+			</div>
+			<div class="link-so"><a href="https://symbiodyssey.com" target="_blank" rel="nofollow">Conceptualized with symbiodyssey</a></div>
+		</footer>
+	</div>
+	<script type="text/javascript" >
+		
+	</script>
+	<script type="text/javascript" src="{{ asset('js/main.min.js', 'theme') }}"></script>
+	</body>
+</html>
