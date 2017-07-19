@@ -1,17 +1,18 @@
 #!/bin/bash
 #Script to install Bolt CMS
 
-echo Hello, I'm Brian and I'm here to help you install Bolt CMS.
-echo I'm very curious and would like to ask you a few questions.
+echo Hello, I\'m Brian and I\'m here to help you install Bolt CMS.
+echo I\'m very curious and would like to ask you a few questions.
 
 read -p 'What is the title of your website ? ' title
 echo Nice, I like it !
 
 read -p 'What is your domain name (without http and www, for instance : example.com) ? ' domain
-echo Oh wow ! I wish I've thought about it before you
+echo Oh wow ! I wish I\'ve thought about it before you
 
 read -p 'What is your username for MySQL ? ' mysqlroot
 read -sp 'What is the password of this user ? ' mysqlpwd
+echo
 echo Thanks, now I know a new secret :P
 echo But no worries you can trust me !
 
