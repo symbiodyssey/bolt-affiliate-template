@@ -39,7 +39,7 @@ chown -R www-data:www-data public/thumbs
 mkdir tmp
 cd tmp
 
-curl -L https://github.com/symbiodyssey/bolt-affiliate-template/archive/master.tar.gz
+curl -LO https://github.com/symbiodyssey/bolt-affiliate-template/archive/master.tar.gz
 tar -xzf bolt-affiliate-template-master.tar.gz --strip-components=1
 mv bolt-affiliate-template-master/template ../public/theme/affiliatews
 cd ..
