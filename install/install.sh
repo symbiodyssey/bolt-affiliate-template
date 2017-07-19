@@ -40,8 +40,8 @@ mkdir tmp
 cd tmp
 
 curl -LO https://github.com/symbiodyssey/bolt-affiliate-template/archive/master.tar.gz
-tar -xzf bolt-affiliate-template-master.tar.gz --strip-components=1
-mv bolt-affiliate-template-master/template ../public/theme/affiliatews
+tar -xzf master.tar.gz --strip-components=1
+mv template ../public/theme/affiliatews
 cd ..
 rm -R tmp
 
