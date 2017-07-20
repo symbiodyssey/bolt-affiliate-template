@@ -13,7 +13,7 @@ items:
             type: text
             class: large
         content:
-            type: html
+            type: textarea
             height: 150px
         affiliatelink:
             type: text
