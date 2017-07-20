@@ -15,7 +15,7 @@ read -sp 'What is the new password for this user ? ' mysqlpwd
 echo Thanks, that\'s should be very easy...
 
 #Create the new database and user for MySQL
-mysql --user="$mysqlroot" --password="$rootpwd"  --execute="CREATE DATABASE $dbname character set UTF8 collate utf8_bin; CREATE USER '$mysqluser'@'localhost' IDENTIFIED BY 'mysqlpwd';GRANT ALL PRIVILEGES ON $dbname.* TO '$mysqluser'@'localhost';"
+mysql --user="$mysqlroot" --password="$rootpwd"  --execute="CREATE DATABASE $dbname character set UTF8 collate utf8_bin; CREATE USER '$mysqluser'@'localhost' IDENTIFIED BY '$mysqlpwd';GRANT ALL PRIVILEGES ON $dbname.* TO '$mysqluser'@'localhost';"
 
 echo It\'s all done !
 echo See you soon !
