@@ -42,5 +42,6 @@ items:
     show_on_dashboard: true
     default_status: unpublish
     searchable: true
+    recordsperpage: 100
     icon_many: "fa:cubes"
     icon_one: "fa:cube"
