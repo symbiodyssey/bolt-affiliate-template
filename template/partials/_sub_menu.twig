@@ -1,0 +1,5 @@
+{% for item in menu %}
+	{% if item.label is defined %}
+		<a href="{{item.link}}"  title="{{ item[app.request.get('_locale')~'title']|default(item.title)|default('')|escape }}">{{- item[app.request.get('_locale')~'label']|default(item.label)|default('-') -}}</a>
+	{% endif %}
+{% endfor %}
