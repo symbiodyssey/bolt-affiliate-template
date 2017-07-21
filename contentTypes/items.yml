@@ -5,23 +5,28 @@ items:
         title:
             type: text
             class: large
-            group: "Block"
+            pattern: "^.{1,45}$"
+            required: true
         slug:
             type: slug
             uses: [ title ]
         price:
-            type: text
+            type: float
             class: large
         content:
             type: textarea
             height: 150px
+            pattern: "^.{1,140}$"
+            required: true
         affiliatelink:
             type: text
             label: Affiliate link
+            required
         image:
             type: image
-            attrib: title
+            attrib: [alt, title]
             extensions: [ gif, jpg, png ]
+            upload: item
     relations:
 #        categories:
 #            multiple: true
@@ -45,3 +50,4 @@ items:
     recordsperpage: 100
     icon_many: "fa:cubes"
     icon_one: "fa:cube"
+    taxonomy: tags
