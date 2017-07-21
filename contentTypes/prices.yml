@@ -21,6 +21,7 @@ prices:
         content:
             type: textarea
             height: 150px
+            pattern: "^.{1,140}$"
             required: true
         image:
             type: image
