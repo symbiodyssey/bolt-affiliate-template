@@ -21,7 +21,7 @@ items:
         affiliatelink:
             type: text
             label: Affiliate link
-            required
+            required: true
         image:
             type: image
             attrib: [alt, title]
