@@ -1,4 +1,4 @@
-homepage_template: listing.twig
+homepage_template: record.twig
 record_template: record.twig
 listing_template: listing.twig
 
