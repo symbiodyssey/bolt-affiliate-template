@@ -1,0 +1,29 @@
+#Type location, allows the Items to be categorized into locations
+
+locations:
+    name: Locations
+    singular_name: Location
+    fields:
+        title:
+            type: text
+            required: true
+            class: large
+        slug:
+            type: slug
+            uses: [ title ]
+        content:
+            type: textarea
+            height: 150px
+            required: true
+        image:
+            type: image
+            attrib: title
+            extensions: [ gif, jpg, png ]
+            required: true
+    show_on_dashboard: true
+    default_status: unpublish
+    record_template: record.twig
+    listing_template: listing.twig
+    searchable: false
+    icon_many: "fa:cubes"
+    icon_one: "fa:cube"
