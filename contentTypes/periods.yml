@@ -1,0 +1,38 @@
+periods:
+    name: Periods
+    singular_name: Period
+    fields:
+        title:
+            type: text
+            class: large
+            pattern: "^.{1,45}$"
+            required: true
+        slug:
+            type: slug
+            uses: [ title ]
+        startdate:
+            type: datetime
+            label: Beginning of the period
+            variant: inline
+        enddate:
+            type: datetime
+            label: End of the period
+            variant: inline
+        content:
+            type: textarea
+            height: 150px
+            pattern: "^.{1,180}$"
+            required: true
+        image:
+            type: image
+            attrib: [title, alt]
+            upload: period
+            extensions: [ gif, jpg, png ]
+    show_on_dashboard: true
+    default_status: publish
+    record_template: record.twig
+    listing_template: listing.twig
+    searchable: false
+    icon_many: "fa:cubes"
+    icon_one: "fa:cube"
+    slug: seasons
