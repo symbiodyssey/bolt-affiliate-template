@@ -19,9 +19,9 @@ locations:
             required: true
         image:
             type: image
-            attrib: title
+            attrib: [alt, title]
             extensions: [ gif, jpg, png ]
-            required: true
+            upload: location
     show_on_dashboard: true
     default_status: unpublish
     record_template: record.twig
