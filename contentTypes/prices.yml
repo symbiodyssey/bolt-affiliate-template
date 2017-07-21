@@ -1,0 +1,36 @@
+prices:
+    name: Prices
+    singular_name: Price
+    fields:
+        title:
+            type: text
+            class: large
+            pattern: "^.{1,45}$"
+            required: true
+        slug:
+            type: slug
+            uses: [ title ]
+        minprice:
+            type: float
+            label: Minimum price
+            required: true
+        maxprice:
+            type: float
+            label: Max price
+            required: true
+        content:
+            type: textarea
+            height: 150px
+            required: true
+        image:
+            type: image
+            attrib: title
+            extensions: [ gif, jpg, png ]
+    show_on_dashboard: true
+    default_status: publish
+    record_template: record.twig
+    listing_template: listing.twig
+    searchable: false
+    icon_many: "fa:cubes"
+    icon_one: "fa:cube"
+    slug: prices
