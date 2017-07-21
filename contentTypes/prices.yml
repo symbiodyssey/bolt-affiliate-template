@@ -25,8 +25,9 @@ prices:
             required: true
         image:
             type: image
-            attrib: title
+            attrib: [alt, title]
             extensions: [ gif, jpg, png ]
+            upload: price
     show_on_dashboard: true
     default_status: publish
     record_template: record.twig
