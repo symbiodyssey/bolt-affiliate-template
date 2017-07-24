@@ -9,8 +9,8 @@ read -p 'What is your domain name (without http and www, for instance : example.
 echo -e "\n\nThank you very much, let me do that for you !"
 
 curl -O https://raw.githubusercontent.com/symbiodyssey/bolt-affiliate-template/master/install/nginx-site-conf
-sed -i -e "s/{{domain}}/$domain/g" install/nginx-site-conf
+sed -i -e "s/{{domain}}/$domain/g" nginx-site-conf
 mv nginx-site-conf /etc/nginx/sites-available/$domain
 ln -s /etc/nginx/sites-available/$domain /etc/nginx/sites-enabled/$domain
 
-echo -e "\n\nIt's already done !\n\nDon't forget to realod nginx may be this can help : systemctl nginx reload\n\n"
+echo -e "\n\nIt's already done !\n\nDon't forget to realod nginx may be this can help : systemctl reload nginx\n\n"
