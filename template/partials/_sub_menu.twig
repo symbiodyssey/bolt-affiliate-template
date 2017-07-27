@@ -1,5 +1,65 @@
+{# This file might seem a little complex, because of the high density of tags.
+   It uses Twig macros and ternary selectors. Read up on them, if required:
+   macros: http://twig.sensiolabs.org/doc/templates.html#macros
+   ternary operators: http://twig.sensiolabs.org/doc/templates.html#other-operators
+#}
+
+{# Make sure the setting for the submenus is defined. #}
+{% if withsubmenus is not defined %}
+    {% set withsubmenus = true %}
+{% endif %}
+
+{# The 'recursive' macro, for inserting one menu item. If it has a submenu, it
+   invokes itself to insert the items of the submenus. #}
+{% macro display_menu_item(item, loop, extraclass, withsubmenus) %}
+    {% from _self import display_menu_item %}
+    {% spaceless %}      
+        {% if item.submenu is defined and withsubmenus %}
+                <div class="dropdown">
+                <button class="dropbtn">{{- item[app.request.get('_locale')~'label']|default(item.label)|default('-') -}}</button>
+               
+                    <div class="dropdown-content">
+                    {% for submenu in item.submenu %}
+                        <a href="{{ submenu.link }}" title='{{ submenu[app.request.get('_locale')~'title']|default(submenu.title)|default('')|escape }}' class='{{ submenu.class|default('') }}'>
+                                {{- submenu[app.request.get('_locale')~'label']|default(submenu.label)|default('-') -}}
+                                </a>
+                    {% endfor %}
+                </div>
+                </div>
+        {% else %}
+                {% if item.type is defined %}
+                    <div class="dropdown">
+                    <button class="dropbtn">{{- item[app.request.get('_locale')~'label']|default(item.label)|default('-') -}}</button>
+                        
+                        <div class="dropdown-content">
+                        {% setcontent submenus = item.type %}
+                        {% for submenu in submenus %}
+                                   <a href="{{ submenu.link }}">
+                                {{- submenu[app.request.get('_locale')~'title']|default(submenu.title)|default('-') -}}
+                                </a>
+                             {% endfor %}
+                    </div>
+                </div>
+                {% else %}
+                    <a href="{{ item.link }}" title='{{ item[app.request.get('_locale')~'title']|default(item.title)|default('')|escape }}' class='{{ item.class|default('') }}'>
+                    {{- item[app.request.get('_locale')~'label']|default(item.label)|default('-') -}}
+                    </a>
+                {% endif %}
+        {% endif %}
+    {% endspaceless %}
+{% endmacro %}
+
+{# Make the macro available for use #}
+{% from _self import display_menu_item %}
+
+{# The main menu loop: Iterates over the items, calling `display_menu_item` #}
+ <div class="fixable-bar">
 {% for item in menu %}
-	{% if item.label is defined %}
-		<a href="{{item.link}}"  title="{{ item[app.request.get('_locale')~'title']|default(item.title)|default('')|escape }}">{{- item[app.request.get('_locale')~'label']|default(item.label)|default('-') -}}</a>
-	{% endif %}
+    {% if item.label is defined %}
+       
+        {{ display_menu_item(item, loop, '', withsubmenus) }}
+
+    {% endif %}
+
 {% endfor %}
+          </div>

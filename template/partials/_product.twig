@@ -1,0 +1,9 @@
+<div class="tile" itemscope itemtype="http://schema.org/Product">
+<div class="tile-title"><a href="{{ item.affiliatelink }}" target="_blank" rel="nofollow"  itemprop="name">{{item.title}}</a></div>
+<div class="tile-img"><a href="{{ item.affiliatelink }}" target="_blank" rel="nofollow"><img src="{{ item.image|thumbnail('tileimg') }}" itemprop="image" alt="{{item.img_descr}}"></a></div>
+    <div class="tile-content" itemprop="description">{{ item.content }}</div>
+    <div class="tile-footer"  itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        <span class="tile-price" itemprop="price">{{ item.price }}</span>
+        <a href="{{ item.affiliatelink }}" target="_blank" rel="nofollow">Get it !</a>
+    </div>
+</div>

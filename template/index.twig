@@ -1,9 +1,14 @@
 {% extends 'partials/_master.twig' %}
 
+{% block banner %}
+<div class="banner">{% setcontent logo = 'block/banner' %}
+    <img src="{{ image(logo.image) }}"/>
+</div>
+{% endblock banner %} 
+
 {% block category %}
     <div class="tiles">
-        {% set items = record.related() %}
-        {% for item in items %}
+        {% for item in records %}
             {% include 'partials/_product.twig' %}
         {% endfor %}
         {{ pager(template = 'partials/_sub_pager.twig') }}
