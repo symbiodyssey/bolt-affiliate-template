@@ -20,7 +20,7 @@
                
                     <div class="dropdown-content">
                     {% for submenu in item.submenu %}
-                        <a href="{{ submenu.link }}" title='{{ submenu[app.request.get('_locale')~'title']|default(submenu.title)|default('')|escape }}' class='{{ submenu.class|default('') }}'>
+                        <a href="{{ submenu.link }}" {% if submenu.item is defined %}title="{{- submenu[app.request.get('_locale')~'title']|default(submenu.title)|default('')|escape }}" {% endif %} class="{{ submenu.class|default('') -}}">
                                 {{- submenu[app.request.get('_locale')~'label']|default(submenu.label)|default('-') -}}
                                 </a>
                     {% endfor %}
@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 {% else %}
-                    <a href="{{ item.link }}" title='{{ item[app.request.get('_locale')~'title']|default(item.title)|default('')|escape }}' class='{{ item.class|default('') }}'>
+                    <a href="{{ item.link }}" {% if submenu.item is defined %}title="{{ item[app.request.get('_locale')~'title']|default(item.title)|default('')|escape }}"{% endif %} class="{{ item.class|default('') }}">
                     {{- item[app.request.get('_locale')~'label']|default(item.label)|default('-') -}}
                     </a>
                 {% endif %}
