@@ -7,12 +7,17 @@ items:
             class: large
             pattern: "^.{1,45}$"
             required: true
+            group: "Item"
         slug:
             type: slug
             uses: [ title ]
         price:
             type: float
             class: large
+        currency:
+            type: text
+            pattern: "^.{1,5}$"
+            required: true
         content:
             type: textarea
             height: 150px
@@ -28,22 +33,22 @@ items:
             extensions: [ gif, jpg, png ]
             upload: item
     relations:
-#        categories:
-#            multiple: true
-#            order: title
-#            label: Select zero or more categories
-#        periods:
-#            multiple: true
-#            order: title
-#            label: Select zero or more periods
-#        locations:
-#            multiple: true
-#            order: title
-#            label: Select zero or more locations
-#        prices:
-#            multiple: true
-#            order: title
-#            label: Select zero or more prices
+        categories:
+            multiple: true
+            order: title
+            label: Select zero or more categories
+        periods:
+            multiple: true
+            order: title
+            label: Select zero or more periods
+        locations:
+            multiple: true
+            order: title
+            label: Select zero or more locations
+        prices:
+            multiple: true
+            order: title
+            label: Select zero or more prices
     show_on_dashboard: true
     default_status: unpublish
     searchable: true
