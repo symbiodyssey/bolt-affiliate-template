@@ -117,6 +117,7 @@ php app/nut extensions:install bobdenotter/seo ^1.0-stable
 php app/nut extensions:install koolserve/html-minify ^1.0-stable
 php app/nut extensions:install bolt/robots ^1.0-stable
 php app/nut extensions:install bolt/labels ^3.0-stable
+php app/nut extensions:install bacboslab/menueditor ^2.2-stable
 #php app/nut extensions:install bolt/googleanalytics ^2.0-stable
 
 
