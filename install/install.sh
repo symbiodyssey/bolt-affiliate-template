@@ -61,6 +61,7 @@ rm -R tmp
 
 #init Bolt
 php app/nut init
+php app/nut database:update
 #Try to reach the website
 wget -qO- "http://$domain" &> /dev/null
 
