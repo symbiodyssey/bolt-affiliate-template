@@ -14,7 +14,7 @@ echo Thanks, that\'s should be very easy...
 #Generates passwords
 function randpw { < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-12};echo;}
 
-mysqluser=$("usr_$dbname" | cut -c1-15);
+mysqluser=("usr_$dbname" | cut -c1-15);
 mysqlpwd=$(randpw);
 
 #Create the new database and user for MySQL
