@@ -13,4 +13,6 @@ sed -i -e "s/{{domain}}/$domain/g" nginx-site-conf
 mv nginx-site-conf /etc/nginx/sites-available/$domain
 ln -s /etc/nginx/sites-available/$domain /etc/nginx/sites-enabled/$domain
 
-echo -e "\n\nIt's already done !\n\nDon't forget to realod nginx may be this can help : systemctl reload nginx\n\n"
+systemctl reload nginx
+
+echo -e "\n\nIt's already done !"
