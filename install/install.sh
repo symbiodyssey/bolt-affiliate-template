@@ -34,13 +34,6 @@ tar -xzf bolt-latest.tar.gz --strip-components=1
 php app/nut setup:sync
 rm bolt-latest.tar.gz
 
-#Change the ownership of some directories to make it work
-chown -R www-data:www-data app/cache
-chown -R www-data:www-data app/config
-chown -R www-data:www-data extensions
-chown -R www-data:www-data public/files
-chown -R www-data:www-data public/thumbs
-
 mkdir tmp
 cd tmp
 
@@ -58,6 +51,11 @@ sed -i -e "s/{{dbname}}/$mysqlname/g" install/config.yml
 #Replace the config.yml with the new special one
 mv install/config.yml ../app/config/config.yml
 
+#Generate the content type file
+cat contentTypes/*.yml > newct.yml
+mv newct.yml app/config/contenttypes.yml
+
+#All done with this folder, let's go away and remove
 cd ..
 rm -R tmp
 
@@ -78,8 +76,27 @@ php app/nut  user:add "$username" "$name" "$username@$domain" "$userpwd" chief-e
 #Activate the users
 mysql --user="$mysqluser" --password="$mysqlpwd" --database="$mysqlname"  --execute="update bolt_users set enabled=1 where id>0;"
 
+#Change the ownership of some directories to make it work
+chown -R root:www-data ./
+
+
+#Change the rights
+chmod a+r ./
+
+for dir in app/cache/ app/database/ public/thumbs/ ; do
+    find $dir -type d -print0 | xargs -0 chmod u+rwx,g+rwxs,o+rx-w
+    find $dir -type f -print0 | xargs -0 chmod u+rw-x,g+rw-x,o+r-wx > /dev/null 2>&1
+done
+
+for dir in app/config/ extensions/ public/extensions/ public/files/ public/theme/ ; do
+    find $dir -type d -print0 | xargs -0 chmod u+rwx,g+rwxs,o+rx-w
+    find $dir -type f -print0 | xargs -0 chmod u+rw-x,g+rw-x,o+r-wx > /dev/null 2>&1
+done
+
+
 #init Bolt
 php app/nut init
+wget -qO- "http://$domain" &> /dev/null
 
 #Installation of the needed plugins
 php app/nut extensions:install bolt/googleanalytics ^2.0-stable
@@ -87,6 +104,7 @@ php app/nut extensions:install bolt/sitemap ^2.2-stable
 php app/nut extensions:install bobdenotter/seo ^1.0-stable
 php app/nut extensions:install koolserve/html-minify ^1.0-stable
 php app/nut extensions:install bolt/robots ^1.0-stable
+php app/nut extensions:install bolt/labels ^3.0-stable
 
 #Add important content to the website
 mysql --user="$mysqluser" --password="$mysqlpwd" --database="$mysqlname"  --execute="insert into bolt_blocks (slug, datecreated, datepublish, ownerid, status, title, image) values('logo', now(), now(), 1, 'published', 'logo', '{"file":"food-fruit-orange-1286.jpg"}');insert into bolt_blocks (slug, datecreated, datepublish, ownerid, status, title, image) values('banner', now(), now(), 1, 'published', 'banner', '{"file":"california-foggy-golden-gate-bridge-2771.jpg"}');insert into bolt_blocks (slug, datecreated, datepublish, ownerid, status, title, content) values('footer', now(), now(), 1, 'published', 'footer', 'This is the footer !');"
