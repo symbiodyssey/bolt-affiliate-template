@@ -59,6 +59,9 @@ mv newct.yml app/config/contenttypes.yml
 cd ..
 rm -R tmp
 
+#init Bolt
+php app/nut init
+
 #Creation of two users
 #Generation of two passwords one for the admin and one for the user
 function randpw { < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-12};echo;}
@@ -94,10 +97,6 @@ for dir in app/config/ extensions/ public/extensions/ public/files/ public/theme
 done
 
 
-#init Bolt
-php app/nut init
-wget -qO- "http://$domain" &> /dev/null
-
 #Installation of the needed plugins
 php app/nut extensions:install bolt/googleanalytics ^2.0-stable
 php app/nut extensions:install bolt/sitemap ^2.2-stable
@@ -109,6 +108,8 @@ php app/nut extensions:install bolt/labels ^3.0-stable
 #Add important content to the website
 mysql --user="$mysqluser" --password="$mysqlpwd" --database="$mysqlname"  --execute="insert into bolt_blocks (slug, datecreated, datepublish, ownerid, status, title, image) values('logo', now(), now(), 1, 'published', 'logo', '{"file":"food-fruit-orange-1286.jpg"}');insert into bolt_blocks (slug, datecreated, datepublish, ownerid, status, title, image) values('banner', now(), now(), 1, 'published', 'banner', '{"file":"california-foggy-golden-gate-bridge-2771.jpg"}');insert into bolt_blocks (slug, datecreated, datepublish, ownerid, status, title, content) values('footer', now(), now(), 1, 'published', 'footer', 'This is the footer !');"
 
+#Try to reach the website
+wget -qO- "http://$domain" &> /dev/null
 
 #Update database and clean the cache
 php app/nut database:update
