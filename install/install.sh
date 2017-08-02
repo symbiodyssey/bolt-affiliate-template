@@ -52,8 +52,13 @@ sed -i -e "s/{{dbname}}/$mysqlname/g" install/config.yml
 mv install/config.yml ../app/config/config.yml
 
 #Generate the content type file
-cat contentTypes/*.yml > newct.yml
-mv newct.yml app/config/contenttypes.yml
+cat contentTypes/contenttypes.yml >> newct.yml                                            
+cat contentTypes/locations.yml >> newct.yml                                               
+cat contentTypes/periods.yml >> newct.yml                                                 
+cat contentTypes/prices.yml >> newct.yml                                                  
+cat contentTypes/items.yml >> newct.yml  
+
+mv newct.yml ../app/config/contenttypes.yml
 
 #All done with this folder, let's go away and remove
 cd ..
@@ -99,20 +104,20 @@ for dir in app/config/ extensions/ public/extensions/ public/files/ public/theme
 done
 
 
-#Installation of the needed plugins
-php app/nut extensions:install bolt/googleanalytics ^2.0-stable
-php app/nut extensions:install bolt/sitemap ^2.2-stable
-php app/nut extensions:install bobdenotter/seo ^1.0-stable
-php app/nut extensions:install koolserve/html-minify ^1.0-stable
-php app/nut extensions:install bolt/robots ^1.0-stable
-php app/nut extensions:install bolt/labels ^3.0-stable
-
 #Add important content to the website
 mysql --user="$mysqluser" --password="$mysqlpwd" --database="$mysqlname"  --execute="insert into bolt_blocks (slug, datecreated, datepublish, ownerid, status, title, image) values('logo', now(), now(), 1, 'published', 'logo', '{"file":"food-fruit-orange-1286.jpg"}');insert into bolt_blocks (slug, datecreated, datepublish, ownerid, status, title, image) values('banner', now(), now(), 1, 'published', 'banner', '{"file":"california-foggy-golden-gate-bridge-2771.jpg"}');insert into bolt_blocks (slug, datecreated, datepublish, ownerid, status, title, content) values('footer', now(), now(), 1, 'published', 'footer', 'This is the footer !');"
 
 #Update database and clean the cache
 php app/nut database:update
 php app/nut cache:clear
+
+#Installation of the needed plugins
+php app/nut extensions:install bolt/sitemap ^2.2-stable
+php app/nut extensions:install bobdenotter/seo ^1.0-stable
+php app/nut extensions:install koolserve/html-minify ^1.0-stable
+php app/nut extensions:install bolt/robots ^1.0-stable
+php app/nut extensions:install bolt/labels ^3.0-stable
+php app/nut extensions:install bolt/googleanalytics ^2.0-stable
 
 
 echo -e "#####################################"
