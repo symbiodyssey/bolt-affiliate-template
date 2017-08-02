@@ -9,6 +9,7 @@ locations:
             required: true
             pattern: "^.{1,45}$"
             class: large
+            group: "Location"
         slug:
             type: slug
             uses: [ title ]
