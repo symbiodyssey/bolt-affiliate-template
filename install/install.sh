@@ -31,7 +31,7 @@ cd $bolt_dir/$domain
 #Get the latest version of Bolt
 curl -O https://bolt.cm/distribution/bolt-latest.tar.gz
 tar -xzf bolt-latest.tar.gz --strip-components=1
-php app/nut setup:sync
+php app/nut init
 rm bolt-latest.tar.gz
 
 mkdir tmp
@@ -60,7 +60,6 @@ cd ..
 rm -R tmp
 
 #init Bolt
-php app/nut init
 php app/nut database:update
 #Try to reach the website
 wget -qO- "http://$domain" &> /dev/null
