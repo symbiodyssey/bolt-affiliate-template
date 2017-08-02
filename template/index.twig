@@ -2,7 +2,9 @@
 
 {% block banner %}
 <div class="banner">{% setcontent logo = 'block/banner' %}
+{% if logo.image is not empty %}
     <img src="{{ image(logo.image) }}"/>
+{% endif %}
 </div>
 {% endblock banner %} 
 
