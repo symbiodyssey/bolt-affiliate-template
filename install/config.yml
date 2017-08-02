@@ -10,7 +10,7 @@ database:
   username: {{dbuser}}
   password: {{dbpswd}}
   databasename: {{dbname}}
-  
+
 # The name of the website
 sitename: {{title}}
 payoff: 
@@ -25,6 +25,7 @@ theme: affiliatews
 # The locale that'll be used by the application. If no locale is set the
 # fallback locale is 'en_GB'. For available options, see:
 # https://docs.bolt.cm/other/locales
+
 #
 # In some cases it may be needed to specify (non-standard) variations of the
 # locale to get everything to work as desired.
@@ -204,13 +205,13 @@ changelog:
 # Note: If you change these values, you might need to clear the cache before
 #       they show up.
 thumbnails:
-    default_thumbnail: [ 400, 300 ]
+    default_thumbnail: [ 160, 120 ]
     default_image: [ 1000, 750 ]
     quality: 80
     cropping: crop
-    notfound_image: view/img/default_notfound.png
-    error_image: view/img/default_error.png
-    save_files: true
+    notfound_image: bolt_assets://img/default_notfound.png
+    error_image: bolt_assets://img/default_error.png
+    save_files: false
     allow_upscale: false
     exif_orientation: true
     only_aliases: false
@@ -221,7 +222,7 @@ thumbnails:
 # left in the content that is shown to users. For example, tags like `<script>`
 # or `onclick`-attributes.
 htmlcleaner:
-    allowed_tags: [ div, span, p, br, hr, s, u, strong, em, i, b, li, ul, ol, mark, blockquote, pre, code, tt, h1, h2, h3, h4, h5, h6, dd, dl, dh, table, tbody, thead, tfoot, th, td, tr, a, img, address, abbr, iframe, caption ]
+    allowed_tags: [ div, span, p, br, hr, s, u, strong, em, i, b, li, ul, ol, mark, blockquote, pre, code, tt, h1, h2, h3, h4, h5, h6, dd, dl, dh, table, tbody, thead, tfoot, th, td, tr, a, img, address, abbr, iframe, caption, sub, super ]
     allowed_attributes: [ id, class, style, name, value, href, src, alt, title, width, height, frameborder, allowfullscreen, scrolling, target, colspan, rowspan ]
 
 # Uploaded file handling
@@ -267,12 +268,13 @@ accept_file_types: [ twig, html, js, css, scss, gif, jpg, jpeg, png, ico, zip, t
 debug: false
 debug_show_loggedoff: false
 debug_permission_audit_mode: false
-debug_error_level: 8181           # equivalent to E_ALL &~ E_NOTICE &~ E_DEPRECATED &~ E_USER_DEPRECATED &~ E_WARNING
-# debug_error_level: -1               # equivalent to E_ALL
+# debug_error_level: 8181           # equivalent to E_ALL &~ E_NOTICE &~ E_DEPRECATED &~ E_USER_DEPRECATED &~ E_WARNING
+debug_error_level: -1               # equivalent to E_ALL
 debug_error_use_symfony: false      # When set to true, Symfony Profiler will be used for exception display when possible
+debug_trace_argument_limit: 4       # Determine how many steps in the backtrace will show (dump) arguments.
 
 # error level when debug is disabled
-production_error_level: 8181 # = E_ALL &~ E_NOTICE &~ E_WARNING &~ E_DEPRECATED &~ E_USER_DEPRECATED
+#production_error_level: 8181 # = E_ALL &~ E_NOTICE &~ E_WARNING &~ E_DEPRECATED &~ E_USER_DEPRECATED
 
 # System debug logging
 # This will enable intensive logging of Silex functions and will be very hard on
@@ -288,7 +290,7 @@ debuglog:
 
 # Use strict variables. This will make Bolt complain if you use {{ foo }},
 # when foo doesn't exist.
-strict_variables: false
+#strict_variables: false
 
 # There are several options for giving editors more options to insert images,
 # video, etc in the WYSIWYG areas. But, as you give them more options, that
@@ -454,3 +456,10 @@ hash_strength: 10
 #        disable: true     # Disable news panel. Defaults to false. "Alerts" will still be shown.
 #    stack:
 #        disable: true     # Disable stack usage. Defaults to false.
+
+# Options that will be forced in next major version
+compatibility:
+    # Whether to return TemplateView instead of TemplateResponse from Controller\Base::render()
+    # Response methods cannot be used on TemplateView objects.
+    # Setting this value to false is deprecated.
+    template_view: true
