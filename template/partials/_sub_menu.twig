@@ -24,6 +24,7 @@
                                 {{- submenu[app.request.get('_locale')~'label']|default(submenu.label)|default('-') -}}
                                 </a>
                     {% endfor %}
+                        <a href="/{{item.link}}">{{ l('show-more') }}</a>
                 </div>
                 </div>
         {% else %}
@@ -38,6 +39,7 @@
                                 {{- submenu[app.request.get('_locale')~'title']|default(submenu.title)|default('-') -}}
                                 </a>
                              {% endfor %}
+                            <a href="/{{item.link}}">{{ l('show-more') }}</a>
                     </div>
                 </div>
                 {% else %}

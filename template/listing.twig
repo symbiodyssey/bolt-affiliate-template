@@ -1,15 +1,18 @@
 {% extends 'partials/_master.twig' %}
 
 {% block category %}
-	<div class="categories">
-	<div class="tiles">
-    	{% for record in records %}
+    <div class="categories">
+    <div class="tiles">
+        {% for record in records %}
         <div class="tile">
-					<div class="tile-title"><a href="{{ record.link }}">{{record.title}}</a></div>
-					<div class="tile-img"><a href="{{ record.link }}"><img src="{{ record.image|thumbnail('tileimg') }}" alt="Illustration"></a></div>
-					<div class="tile-content">{{ record.content }}</div>
-				</div>
-		{% endfor %}
-	</div>
-	</div>
+                    <div class="tile-title"><a href="{{ record.link }}">{{record.title}}</a></div>
+                    <div class="tile-img"><a href="{{ record.link }}"><img src="{{ record.image|thumbnail('tileimg') }}" alt="Illustration"></a></div>
+                    <div class="tile-content">{{ record.content }}</div>
+                    <div class="tile-footer">
+                        <a href="{{ record.link }}">{{ l('show-more') }}</a>
+                    </div>
+                </div>
+        {% endfor %}
+    </div>
+    </div>
 {% endblock category %}

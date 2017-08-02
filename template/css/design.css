@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css?family=Puritan');
+
+body {
+    font-family: 'Puritan', sans-serif;
+    line-height: 200%;
+}
+
+header .title {
+    background-color: #333;
+    height:60px;
+}
+
+header .title img {
+    display:none;
+}
+
+#open {
+    height:60px;
+    float:left;
+    font-size:2em;
+    color:#fff;
+}
+
+#open i {
+    padding-top:15px;
+}
+
+header .banner img {
+    width:100%;
+}
+
+.title h1 {
+    color:#fff;
+    text-transform: uppercase;
+}
+
+header .title img{
+     height: 60px;
+ }
+
+.top-menu a, .top-menu .dropbtn {
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.tiles {
+    margin-top:50px;
+    margin-bottom:50px;
+}
+
+.dropdown a {
+    color:#333;
+}
+
+.tile {
+     margin-bottom:20px;
+    border:1px solid #bbb;
+    border-radius:7px;
+}
+
+.tile-title a {
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+
+.tile-title {
+    margin:10px;
+}
+
+.tile .tile-img img {
+    width:100%;
+    height:auto;
+}
+
+.tile .tile-content {
+    font-size:1.1em;
+    padding:10px;
+    height:80px;
+}
+
+.tile .tile-footer a {
+    display:block;
+    font-size:1.1em;
+    padding:15px;
+    
+    border-radius:5px;
+    margin:5px;
+    background-color: #5FA8DB;
+    color:#fff;
+}
+
+.tile-footer a:hover {
+    background-color:#aFb8DB;
+}
+
+.tile-footer span {
+    font-size:2em;
+}
+
+footer {
+    background-color: #6A2422;
+    margin-top:50px;
+    padding:20px;
+    color: #fff;
+}
+
+@media screen and (min-width: 1024px) {
+    
+    #open {
+        display:none;
+    }
+    
+    .top-menu {
+        display:block;
+        background-color:#fff;
+    }
+    
+    main {
+         margin-top:100px;
+    }
+    
+    .top-menu a, .top-menu .dropbtn {
+        color:#333;
+        margin: 10px;
+    }
+    
+    .tile {
+        margin-bottom:20px;
+    }
+    
+	.tile .tile-img img {
+    	width:auto;
+    	height:300px;
+	}    
+    
+    .header-scroll .top-menu {
+        box-shadow: 0px 3px 5px #ddd;
+    }
+    
+    header .title img {
+        display:block;
+    }
+    
+    
+}
