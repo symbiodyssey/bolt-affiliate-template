@@ -17,7 +17,9 @@
                 <div class="title">
                     <span id="open" onclick="openNav()"><i class="fa fa-bars"></i></span>
                 {% setcontent logo = 'block/logo' %}
+                 {% if logo.image is not empty %}
                 <a href="/"><img src="{{ image(logo.image) }}"/></a>
+                 {% endif %}
                 <a href="/"><h1>{{app.config.get('general/sitename')}}</h1></a>
                 </div>
                  {% block banner %}{% endblock banner %}
