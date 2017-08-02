@@ -33,10 +33,6 @@ items:
             extensions: [ gif, jpg, png ]
             upload: item
     relations:
-        categories:
-            multiple: true
-            order: title
-            label: Select zero or more categories
         periods:
             multiple: true
             order: title
