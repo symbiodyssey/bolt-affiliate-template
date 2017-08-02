@@ -82,7 +82,7 @@ cron_hour: 3
 #       the website, be sure to check for a theme.yml file in your theme's
 #       folder. If a template is set there, it will override the setting here.
 homepage: items
-homepage_template: record.twig
+homepage_template: index.twig
 
 # The default content for the 404 page. Uses the 'record_template' template by
 # default.
@@ -264,7 +264,7 @@ accept_file_types: [ twig, html, js, css, scss, gif, jpg, jpeg, png, ico, zip, t
 # the debugbar is only shown to logged-in users. Use the 'debug_show_loggedoff'
 # option to show it to all users. You probably do not want to use this in a
 # production environment.
-debug: true
+debug: false
 debug_show_loggedoff: false
 debug_permission_audit_mode: false
 debug_error_level: 8181           # equivalent to E_ALL &~ E_NOTICE &~ E_DEPRECATED &~ E_USER_DEPRECATED &~ E_WARNING
