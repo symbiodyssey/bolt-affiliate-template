@@ -115,9 +115,6 @@ php app/nut database:update
 php app/nut cache:clear
 
 
-
-chown -R www-data:www-data app/cache
-
 echo -e "#####################################"
 echo -e "# Warning, please take note of that #"
 echo -e "#####################################"
