@@ -7,6 +7,7 @@ prices:
             class: large
             pattern: "^.{1,45}$"
             required: true
+            group: "Price"
         slug:
             type: slug
             uses: [ title ]
