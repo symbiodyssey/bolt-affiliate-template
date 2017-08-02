@@ -3,7 +3,7 @@
 <div class="tile-img"><a href="{{ item.affiliatelink }}" target="_blank" rel="nofollow" onClick="ga('send', 'event', 'Affiliate Link', 'Click on picture', '{{item.affiliatelink}}');"><img src="{{ item.image|thumbnail('tileimg') }}" itemprop="image" alt="{{item.img_descr}}"></a></div>
     <div class="tile-content" itemprop="description">{{ item.content }}</div>
     <div class="tile-footer"  itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-        <span class="tile-price" itemprop="price">{{ item.price }}</span>
+        <span class="tile-price" itemprop="price">{{ item.price }} {{ item.currency }}</span>
         <a href="{{ item.affiliatelink }}" target="_blank" rel="nofollow" onClick="ga('send', 'event', 'Affiliate Link', 'Click on button', '{{item.affiliatelink}}');">{{ l('get-it') }}</a>
     </div>
 </div>
