@@ -17,3 +17,6 @@ This project is meant to help people easily create their own affiliate website.
  * Increase likelyhood of better decision making
  * More good affiliate websites means better options serverd to on demand needs
  * Could have a clean up effect on websites heavily relying on banner ads.
+
+## Installation & Documentation
+The documentation is available on our <a href="http://starterkits.symbiodyssey.com/kit/affiliate-website" target="_blank">symbiodyssey starter kit page</a>
