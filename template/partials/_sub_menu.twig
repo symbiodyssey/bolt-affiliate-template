@@ -20,7 +20,7 @@
                
                     <div class="dropdown-content">
                     {% for submenu in item.submenu %}
-                        <a href="{{ submenu.link }}" {% if submenu.item is defined %}title="{{- submenu[app.request.get('_locale')~'title']|default(submenu.title)|default('')|escape }}" {% endif %} class="{{ submenu.class|default('') -}}">
+                        <a href="{{ submenu.link }}" title='{{ submenu[app.request.get('_locale')~'title']|default(submenu.title)|default('')|escape }}' class='{{ submenu.class|default('') }}'>
                                 {{- submenu[app.request.get('_locale')~'label']|default(submenu.label)|default('-') -}}
                                 </a>
                     {% endfor %}
@@ -33,17 +33,17 @@
                     <button class="dropbtn">{{- item[app.request.get('_locale')~'label']|default(item.label)|default('-') -}}</button>
                         
                         <div class="dropdown-content">
-                        {% setcontent submenus = item.type %}
+                        {% setcontent submenus = item.type limit 10 orderby 'title' %}
                         {% for submenu in submenus %}
                                    <a href="{{ submenu.link }}">
                                 {{- submenu[app.request.get('_locale')~'title']|default(submenu.title)|default('-') -}}
                                 </a>
                              {% endfor %}
-                            <a href="/{{item.link}}">{{ l('show-more') }}</a>
+                            <a href="/{{item.link}}" class="last-drop-elm">{{ l('show-more') }}</a>
                     </div>
                 </div>
                 {% else %}
-                    <a href="{{ item.link }}" {% if submenu.item is defined %}title="{{ item[app.request.get('_locale')~'title']|default(item.title)|default('')|escape }}"{% endif %} class="{{ item.class|default('') }}">
+                    <a href="{{ item.link }}" title='{{ item[app.request.get('_locale')~'title']|default(item.title)|default('')|escape }}' class='{{ item.class|default('') }}'>
                     {{- item[app.request.get('_locale')~'label']|default(item.label)|default('-') -}}
                     </a>
                 {% endif %}
@@ -64,4 +64,4 @@
     {% endif %}
 
 {% endfor %}
-          </div>
+</div>
