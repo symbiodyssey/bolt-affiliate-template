@@ -3,7 +3,7 @@
 {% setcontent record = 'blocks/404-not-found' %}
 
 {% block title %}
-    {{ record.title|default('404 not found') }}
+   
 {% endblock title %}
 
 {% block main %}
@@ -14,10 +14,9 @@
         {% if app.request.server.get('REQUEST_URI') == '/styleguide' %}
             {{ include('styleguide.twig') }}
         {% else %}
-            <h1>{{ record.title|default('404 not found') }}</h1>
-
+            <article>
             {% if fields(record) %}
-                {{ fields(record) }}
+                {{ record.content | raw }}
             {% else %}
                 <p>
                     The requested page was not found.
@@ -31,7 +30,7 @@
                     </button>
                 </div>
             {% endif %}
-
+            </article>
         {% endif %}
 
         </div>
