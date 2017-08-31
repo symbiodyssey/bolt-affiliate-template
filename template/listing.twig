@@ -6,7 +6,7 @@
         {% for record in records %}
         <div class="tile">
                     <div class="tile-title"><a href="{{ record.link }}">{{record.title}}</a></div>
-                    <div class="tile-img"><a href="{{ record.link }}"><img src="{{ record.image|thumbnail('tileimg') }}" alt="Illustration"></a></div>
+                    <div class="tile-img"><a href="{{ record.link }}"><img src="{{ record.image|default('no-picture.png')|thumbnail('tileimg') }}" alt="Illustration"></a></div>
                     <div class="tile-content">{{ record.content }}</div>
                     <div class="tile-footer">
                         <a href="{{ record.link }}">{{ l('show-more') }}</a>
