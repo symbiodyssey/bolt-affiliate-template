@@ -39,8 +39,12 @@ header .title img{
  }
 
 .top-menu a, .top-menu .dropbtn {
-    color: #fff;
     text-transform: uppercase;
+}
+
+.dropdown:hover .dropbtn {
+    background-color:#e03347;
+    color:#fff;
 }
 
 .tiles {
@@ -73,9 +77,10 @@ header .title img{
 }
 
 .tile .tile-content {
-    font-size:1.1em;
+    font-size:1em;
     padding:10px;
-    height:80px;
+    height:100px;
+    line-height: 150%;
 }
 
 .tile .tile-footer a {
@@ -85,12 +90,12 @@ header .title img{
     
     border-radius:5px;
     margin:5px;
-    background-color: #5FA8DB;
+    background-color: #139eef;
     color:#fff;
 }
 
 .tile-footer a:hover {
-    background-color:#aFb8DB;
+    background-color:#68c4f9;
 }
 
 .tile-footer span {
@@ -108,9 +113,81 @@ article {
     padding:5px;
 }
 
+.dropbtn {
+    cursor:pointer;
+}
+
 .dropdown-content .last-drop-elm {
     text-align:center;
     font-weight:bold;
+}
+
+form {
+    display:table;
+}
+
+form input, form textarea {
+    padding: 10px;
+    font-size:1.2em;
+    border:1px solid #ddd;
+    border-radius:5px;
+}
+
+form .boltforms-row {
+    display:table-row;
+}
+
+form .boltforms-label, form .boltforms-error, form .boltforms-value {
+    display:table-cell;
+    padding-top:5px;
+    padding-bottom:5px;
+    vertical-align:top;
+}
+
+form button {
+    background-color: #139eef;
+    border:0;
+    cursor:pointer;
+    padding:10px;
+    color:#fff;
+    font-size:1.2em;
+    border-radius:5px;
+}
+
+form button:hover {
+    background-color:#68c4f9;
+}
+
+div .pagination ul {
+    text-align:center;
+}
+
+.pagination li {
+    display:inline-block;
+    list-style-type:none;
+    margin-right:5px;
+}
+
+.pagination li a {
+    background-color: #139eef;
+    border:0;
+    cursor:pointer;
+    padding:10px 20px 10px 20px;
+    color:#fff;
+    font-size:1.2em;
+}
+
+.pagination li a:hover {
+    background-color:#68c4f9;
+}
+
+.pagination .active a{
+    background-color: #d3dee5;
+    color:#7a7d7f;
+}
+
+.pagination .active a:hover{
+    background-color:#d9ecf7;
 }
 
 @media screen and (min-width: 1024px) {
@@ -128,19 +205,29 @@ article {
          margin-top:100px;
     }
     
-    .top-menu a, .top-menu .dropbtn {
+    header .top-menu a {
         color:#333;
-        margin: 10px;
+        padding: 10px;
+    }
+    
+    header .top-menu a:hover {
+        background-color: #e03347;
+        color:#fff;
+    }
+    
+    .top-menu .dropbtn {
+        margin-top:10px;
+        color:#333;
     }
     
     .tile {
         margin-bottom:20px;
     }
     
-	.tile .tile-img img {
-    	width:auto;
-    	height:300px;
-	}    
+    .tile .tile-img img {
+        width:auto;
+        height:300px;
+    }
     
     .header-scroll .top-menu {
         box-shadow: 0px 3px 5px #ddd;
