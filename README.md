@@ -20,3 +20,5 @@ This project is meant to help people easily create their own affiliate website.
 
 ## Installation & Documentation
 The documentation is available on our <a href="http://starterkits.symbiodyssey.com/kit/affiliate-website" target="_blank">symbiodyssey starter kit page</a>
+
+<a href="https://symbiodyssey.com">Ideate and collaborate on symbiodyssey.com</a>
