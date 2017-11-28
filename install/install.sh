@@ -34,40 +34,17 @@ tar -xzf bolt-latest.tar.gz --strip-components=1
 php app/nut init
 rm bolt-latest.tar.gz
 
-mkdir tmp
-cd tmp
+#Edit app/config/config.yml with the correct entries
+toreplace="database:"
+dbconf="database:\\
+    driver: mysql\\
+    username: $mysqluser\\
+    password: $mysqlpwd\\
+    databasename: $mysqlname"
 
-#Get the latest version of the template
-curl -LO https://github.com/symbiodyssey/bolt-affiliate-template/archive/master.tar.gz
-tar -xzf master.tar.gz --strip-components=1
-mv template ../public/theme/affiliatews
-
-#Edit the special config.yml with the correct entries
-sed -i -e "s/{{title}}/$title/g" install/config.yml
-sed -i -e "s/{{dbuser}}/$mysqluser/g" install/config.yml
-sed -i -e "s/{{dbpswd}}/$mysqlpwd/g" install/config.yml
-sed -i -e "s/{{dbname}}/$mysqlname/g" install/config.yml
-
-#Replace the config.yml with the new special one
-mv install/config.yml ../app/config/config.yml
-
-#Generate the content type file
-cat contentTypes/contenttypes.yml >> newct.yml                                            
-cat contentTypes/locations.yml >> newct.yml                                               
-cat contentTypes/periods.yml >> newct.yml                                                 
-cat contentTypes/prices.yml >> newct.yml                                                  
-cat contentTypes/items.yml >> newct.yml  
-
-mv newct.yml ../app/config/contenttypes.yml
-
-#All done with this folder, let's go away and remove
-cd ..
-rm -R tmp
-
-#init Bolt
-php app/nut database:update
-#Try to reach the website
-wget -qO- "http://$domain" &> /dev/null
+sed --in-place "/   driver: sqlite/d" app/config/config.yml
+sed --in-place "/    databasename: bolt/d" app/config/config.yml
+sed --in-place "s/${toreplace}/${dbconf}/g" app/config/config.yml
 
 #Creation of two users
 #Generation of two passwords one for the admin and one for the user
@@ -103,22 +80,9 @@ for dir in app/config/ extensions/ public/extensions/ public/files/ public/theme
     find $dir -type f -print0 | xargs -0 chmod u+rw-x,g+rw-x,o+r-wx > /dev/null 2>&1
 done
 
-
-#Add important content to the website
-mysql --user="$mysqluser" --password="$mysqlpwd" --database="$mysqlname"  --execute="insert into bolt_blocks (slug, datecreated, datepublish, ownerid, status, title, image) values('logo', now(), now(), 1, 'published', 'logo', '{"file":"food-fruit-orange-1286.jpg"}');insert into bolt_blocks (slug, datecreated, datepublish, ownerid, status, title, image) values('banner', now(), now(), 1, 'published', 'banner', '{"file":"california-foggy-golden-gate-bridge-2771.jpg"}');insert into bolt_blocks (slug, datecreated, datepublish, ownerid, status, title, content) values('footer', now(), now(), 1, 'published', 'footer', 'This is the footer !');"
-
 #Update database and clean the cache
 php app/nut database:update
 php app/nut cache:clear
-
-#Installation of the needed plugins
-php app/nut extensions:install bolt/sitemap ^2.2-stable
-php app/nut extensions:install bobdenotter/seo ^1.0-stable
-php app/nut extensions:install koolserve/html-minify ^1.0-stable
-php app/nut extensions:install bolt/robots ^1.0-stable
-php app/nut extensions:install bolt/labels ^3.0-stable
-php app/nut extensions:install bacboslab/menueditor ^3.2-stable
-#php app/nut extensions:install bolt/googleanalytics ^2.0-stable
 
 
 echo -e "#####################################"

@@ -18,7 +18,7 @@ mysqluser=("usr_$dbname" | cut -c1-15);
 mysqlpwd=$(randpw);
 
 #Create the new database and user for MySQL
-mysql --user="$mysqlroot" --password="$rootpwd"  --execute="CREATE DATABASE $dbname character set UTF8 collate utf8_bin; CREATE USER '$mysqluser'@'localhost' IDENTIFIED BY '$mysqlpwd';GRANT ALL PRIVILEGES ON $dbname.* TO '$mysqluser'@'localhost';"
+mysql --user="$mysqlroot" --password="$rootpwd"  --execute="CREATE DATABASE $dbname character set UTF8mb4 collate utf8mb4_unicode_ci; CREATE USER '$mysqluser'@'localhost' IDENTIFIED BY '$mysqlpwd';GRANT ALL PRIVILEGES ON $dbname.* TO '$mysqluser'@'localhost';"
 
 echo -e "\n\n\n#####################################"
 echo -e "# Warning, please take note of that #"

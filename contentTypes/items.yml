@@ -32,6 +32,16 @@ items:
             attrib: [alt, title]
             extensions: [ gif, jpg, png ]
             upload: item
+        review:
+            label: Review
+            type: html
+            height: 100px
+            group: "Review"
+        banner:
+            type: image
+            attrib: [alt, title]
+            extensions: [ gif, jpg, png ]
+            upload: item
     relations:
         periods:
             multiple: true
@@ -46,9 +56,7 @@ items:
             order: title
             label: Select zero or more prices
     show_on_dashboard: true
-    default_status: unpublish
+    default_status: published
     searchable: true
-    recordsperpage: 100
-    icon_many: "fa:cubes"
-    icon_one: "fa:cube"
+    recordsperpage: 30
     taxonomy: tags

@@ -24,10 +24,8 @@ locations:
             extensions: [ gif, jpg, png ]
             upload: location
     show_on_dashboard: true
-    default_status: unpublish
+    default_status: published
     record_template: record.twig
     listing_template: listing.twig
     searchable: false
-    icon_many: "fa:cubes"
-    icon_one: "fa:cube"
     slug: locations

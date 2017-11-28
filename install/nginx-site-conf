@@ -13,27 +13,20 @@
 
 # Configuration for a Bolt affiliate website
 
-server {
-    listen       80;
-    listen [::]:80;
-    server_name  www.{{domain}};
-    return       301 http://{{domain}}$request_uri;
-}
-
 
 server {
 	listen 80;
 	listen [::]:80;
 
 
-	root /var/www/{{domain}}/public;
+	 root /var/www/{{domain}}/public;
 
-	# Add index.php to the list if you are using PHP
-	index index.php index.html index.htm;
+	 # Add index.php to the list if you are using PHP
+	 index index.php index.html index.htm;
 
-	server_name {{domain}};
+	 server_name {{domain}};
 
-	location / {
+	 location / {
         try_files $uri $uri/ /index.php?$query_string;
     }
 
@@ -103,11 +96,11 @@ server {
     }	
 
 
-	# pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
-	#
-	location ~ \.php$ {
-		include snippets/fastcgi-php.conf;
-		fastcgi_pass unix:/var/run/php5-fpm.sock;
-	}
+    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+	 #
+	 location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+		  fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
+    }
 	
 }
