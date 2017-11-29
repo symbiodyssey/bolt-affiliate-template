@@ -46,6 +46,10 @@ sed --in-place "/   driver: sqlite/d" app/config/config.yml
 sed --in-place "/    databasename: bolt/d" app/config/config.yml
 sed --in-place "s/${toreplace}/${dbconf}/g" app/config/config.yml
 
+#Update database and clean the cache
+php app/nut database:update
+php app/nut cache:clear
+
 #Creation of two users
 #Generation of two passwords one for the admin and one for the user
 function randpw { < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-12};echo;}
@@ -79,10 +83,6 @@ for dir in app/config/ extensions/ public/extensions/ public/files/ public/theme
     find $dir -type d -print0 | xargs -0 chmod u+rwx,g+rwxs,o+rx-w
     find $dir -type f -print0 | xargs -0 chmod u+rw-x,g+rw-x,o+r-wx > /dev/null 2>&1
 done
-
-#Update database and clean the cache
-php app/nut database:update
-php app/nut cache:clear
 
 
 echo -e "#####################################"
